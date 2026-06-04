@@ -1,0 +1,25 @@
+services:
+  backend:
+    build: ./backend
+    container_name: vision_backend
+    ports:
+      - "8000:8000"
+    # Permet de mapper ta webcam de ton PC vers l'intérieur du conteneur Docker (indispensable sous Linux)
+    devices:
+      - "/dev/video0:/dev/video0"
+    volumes:
+      - ./backend:/app
+    environment:
+      - OMP_NUM_THREADS=1
+      - MKL_NUM_THREADS=1
+
+  frontend:
+    build: ./frontend
+    container_name: vision_frontend
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    depends_on:
+      - backend

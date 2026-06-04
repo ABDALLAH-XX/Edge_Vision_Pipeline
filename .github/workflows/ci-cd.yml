@@ -1,0 +1,44 @@
+name: Edge Vision Python CI/CD
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test-backend:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Récupérer le code
+      uses: actions/checkout@v4
+
+    - name: Configurer Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.10'
+
+    - name: Installer les dépendances Python
+      run: |
+        cd backend
+        python -m pip install --upgrade pip
+        # pip install -r requirements.txt
+
+    # Optionnel : Tu pourras ajouter ici des outils pour vérifier la propreté de ton code Python (comme flake8 ou black)
+
+  test-frontend:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Récupérer le code
+      uses: actions/checkout@v4
+
+    - name: Configurer Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+
+    - name: Installer et Build React
+      run: |
+        cd frontend
+        # npm ci
+        # npm run build
