@@ -4,7 +4,7 @@
 ![License](https://img.shields.io/badge/license-MIT-blue?style=flat-square)
 
 A computer vision pipeline optimized for **Edge AI** deployment on consumer-grade hardware.
-YOLOv8n quantized in **INT8** via Intel OpenVINO achieves a **×3.4 FPS speedup** over FP32
+YOLOv8n quantized in **INT8** via Intel OpenVINO achieves a **×4.07 FPS speedup** over FP32
 on CPU — no GPU required.
 
 Fully containerized with **Docker Compose** (FastAPI backend + React frontend).
